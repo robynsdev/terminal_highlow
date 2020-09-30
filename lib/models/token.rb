@@ -16,8 +16,15 @@ class Token
 
   def bet_tokens
     puts 'How many tokens do you want to bet?'
-    bet = gets.to_i
-    @total_tokens -= bet
+    @bet = gets.to_i
+    @total_tokens -= @bet
+  end
+
+  def double_tokens
+    @bet *= 2
+    puts "You've doubled the pot!"
+    puts "There are #{@bet} tokens in the pot."
+    puts 
   end
 
 end

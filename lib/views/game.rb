@@ -12,21 +12,14 @@ token = Token.new
   token.total_tokens
 
   # play game
+  # bet tokens
   while true
-  
-    # total_tokens = 10
-    # puts 'How many tokens do you want to bet?'
-    # pot = gets.to_i
-    # total_tokens -= pot
-
-    # puts
-    # puts "You have #{total_tokens} tokens remaining."
-
     token.bet_tokens
-    token.tokens_remaining
-
+    
+    # play for 15 rounds before deck shuffle
     15.times do
-
+      token.tokens_remaining
+      
       dealer = deck.draw_card
       deck.add_card(dealer)
 
@@ -35,7 +28,6 @@ token = Token.new
       puts "The dealer deals himself a facedown card."
       puts
 
-      # player gets a card faceup
       player = deck.draw_card
       deck.add_card(player)
 
@@ -46,6 +38,7 @@ token = Token.new
       sleep(0.3)
       puts 
       sleep(0.3)
+
       puts "Do you think the dealer's card is higher or lower than yours?"
       puts "Choose high or low."
       choice = gets.chomp.downcase
@@ -68,21 +61,17 @@ token = Token.new
       # else
       #   p dealer.join(0).to_i
       # end
-
-      if ((dealer[1] > player[1]) && choice == 'high') || ((dealer[1] < player[1]) && choice == 'low')
-        puts "Congratulations, #{name}. You won!"
-        pot *= 2
-        puts "There are #{pot} tokens in the pot."
-      # elsif (dealer[1] == player[1]) && ((dealer[0] > player[0]) && choice == 'high') || ((dealer[0] < player[0]) && choice == 'low')
-      #   puts "Congratulations, #{name}. You won!"
-      else
-        puts "Too bad, #{name}. You lost."
-        puts "You have #{total_tokens} total tokens."
-        puts 'How many tokens do you want to bet?'
-        pot = gets.to_i
-        total_tokens -= pot
+      dealer = dealer.reverse.join.to_i
+      player = player.reverse.join.to_i
     
+      if (dealer > player && choice == 'high') || (dealer < player && choice == 'low')
+        puts "Congratulations, #{Name.name}. You won!"
+        token.double_tokens
+      else 
+        puts "Too bad, #{Name.name}. You lose."
       end
+    
+    
       
       # play again?
       puts 
