@@ -15,14 +15,14 @@ class High_score
     end
   end
 
-  def self.table
+  def self.streak_table
     headers = %w[Player Win_streak]
-    attrs = attribute_rows  
+    attrs = streak_rows  
     table = TTY::Table.new headers, attrs
     puts table.render(:ascii)
   end
 
-  def self.attribute_rows
+  def self.streak_rows
     # File.open("high_score.txt", "r") do |file|
     #   puts file
     # end
@@ -33,8 +33,26 @@ class High_score
     rows << ['Matthew', '3']
   end
 
+  def self.token_table
+    headers = %w[Player Total_tokens]
+    attrs = token_rows  
+    table = TTY::Table.new headers, attrs
+    puts table.render(:ascii)
+  end
+
+  def self.token_rows
+    # File.open("high_score.txt", "r") do |file|
+    #   puts file
+    # end
+    rows = []
+    rows << ['Fish', '10']
+    rows << ['Asprin', '8']
+    rows << ['Chocolate', '5']
+    rows << ['Cake', '3']
+  end
 
 
 end
 
-High_score.table
+High_score.streak_table
+High_score.token_table

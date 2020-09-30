@@ -1,71 +1,38 @@
-# class Game
-#   def initialize
-#   end
-  
-#   def high_low
-#     puts "A dealer card is drawn face up, your card is drawn face down. You must decide whether your card is higher or lower than the dealers card. Aces are highest cards, twos are the lowest."
-    
-#   end
+require_relative '../models/deck'
+require_relative '../models/get_name'
+require_relative '../models/token'
 
-# end
-def game 
+
+deck = Deck.new
+name = Name.new
+token = Token.new
+
   # get name
-  puts "Hi, what's your name?"
-  name = gets.chomp.capitalize
-  puts
-  puts "Hi #{name}. Let's play high low!"
-  puts "You start with 10 tokens."
-  puts
+  # puts "Hi, what's your name?"
+  # name = gets.chomp.capitalize
+  # puts
+  # puts "Hi #{name}. Let's play high low!"
+  name.get_name
 
-  # explain rules?
-  puts "Do you want me to explain the rules?(y/n)"
-  rules = gets.chomp.downcase
-  if rules == "y"
-    puts "------------------------------------------------------"
-    puts "- A dealer card is dealt face down, your card is dealt face up. You must decide whether the dealer's card is higher or lower than your card. If you play 15 rounds, the deck is reshuffled." 
-    puts "- Aces are the highest cards, twos are the lowest. If the same number is drawn, suits are used to judge which card is higher. Suits in order of high to low are spades, hearts, clubs, diamonds."
-    puts "See if you can get on the scoreboard by getting a long streak or winning the most money!"
-    puts "------------------------------------------------------"
-    puts
-  elsif rules == "n"
-    
-  else
-    puts "Do you want me to explain the rules?(y/n)"
-  end  
+  token.total_tokens
 
   # play game
-
   while true
+  
     cards_drawn = []
+    total_tokens = 10
+    puts
+    puts 'How many tokens do you want to bet?'
+    pot = gets.to_i
+    total_tokens -= pot
 
-    (1..15).each do |round|
-      # dealer gets a card facedown
-      dealer = [rand(1..4), rand(2..14)] if cards_drawn.each {|card| card == dealer}
-      cards_drawn << dealer
+    puts
+    puts "You have #{total_tokens} tokens remaining."
 
-      case dealer[0] 
-      when 1
-        d_suit = "diamonds"
-      when 2
-        d_suit = "clubs"
-      when 3
-        d_suit = "hearts"
-      when 4
-        d_suit = "spades"
-      end  
+    15.times do
 
-      case dealer[1]
-      when 11
-        d_card = "Jack"
-      when 12
-        d_card = "Queen"
-      when 13 
-        d_card = "King"
-      when 14
-        d_card = "Ace"
-      else
-        d_card = dealer[1]
-      end  
+      dealer = deck.draw_card
+      deck.add_card(dealer)
 
       puts
       sleep(0.3)
@@ -73,37 +40,13 @@ def game
       puts
 
       # player gets a card faceup
-      player = [rand(1..4), rand(2..14)] if cards_drawn.each {|card| card == player}
-      cards_drawn << player
-
-      case player[0] 
-      when 1
-        p_suit = "diamonds"
-      when 2
-        p_suit = "clubs"
-      when 3
-        p_suit = "hearts"
-      when 4
-        p_suit = "spades"
-      end  
-
-      case player[1]
-      when 11
-        p_card = "Jack"
-      when 12
-        p_card = "Queen"
-      when 13 
-        p_card = "King"
-      when 14
-        p_card = "Ace"
-      else
-        p_card = player[1]
-      end  
+      player = deck.draw_card
+      deck.add_card(player)
 
       sleep(0.3)
       puts "The dealer deals you a card."
       sleep(0.3)
-      puts "You check it. It's the #{p_card} of #{p_suit}."
+      puts "You check it. It's the #{deck.rank(player[1])} of #{deck.suit(player[0])}."
       sleep(0.3)
       puts 
       sleep(0.3)
@@ -115,20 +58,34 @@ def game
 
       # show dealer card
       sleep(0.3)
-      puts "The dealer flips his card. It's the #{d_card} of #{d_suit}."
+      puts "The dealer flips his card. It's the #{deck.rank(dealer[1])} of #{deck.suit(dealer[0])}."
       puts
 
-      p "dealer: #{dealer}"
-      p "player: #{player}"
-      p choice
-      p dealer[1] > player[1]
+      # # test compare
+      # p "dealer: #{dealer}"
+      # p "player: #{player}"
+      # p choice
+      # p dealer[1] > player[1]
       # compare both dealer and player cards, which is greater?
+      # if dealer[1].digits.length > 1
+      #   p dealer.join.to_i
+      # else
+      #   p dealer.join(0).to_i
+      # end
+
       if ((dealer[1] > player[1]) && choice == 'high') || ((dealer[1] < player[1]) && choice == 'low')
         puts "Congratulations, #{name}. You won!"
+        pot *= 2
+        puts "There are #{pot} tokens in the pot."
       # elsif (dealer[1] == player[1]) && ((dealer[0] > player[0]) && choice == 'high') || ((dealer[0] < player[0]) && choice == 'low')
       #   puts "Congratulations, #{name}. You won!"
       else
         puts "Too bad, #{name}. You lost."
+        puts "You have #{total_tokens} total tokens."
+        puts 'How many tokens do you want to bet?'
+        pot = gets.to_i
+        total_tokens -= pot
+    
       end
       
       # play again?
@@ -141,6 +98,7 @@ def game
         exit
       else
         puts "Do you want to play again? (y/n)"
+        play_again = gets.chomp.downcase
       end  
     end
 
@@ -150,6 +108,3 @@ def game
     puts
     # loop
   end
-end
-
-game

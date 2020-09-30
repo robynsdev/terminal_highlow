@@ -1,41 +1,64 @@
-module Deck
-  def card(card)
-    case card[0]
-    when 1
-      suit = "diamonds"
-    when 2
-      suit = "clubs"
-    when 3
-      suit = "hearts"
-    when 4
-      suit = "spades"
-    end  
-  
-    case card[1]
-    when 11
-      num = "Jack"
-    when 12
-      num = "Queen"
-    when 13 
-      num = "King"
-    when 14
-      num = "Ace"
-    else
-      num = card[1]
-    end   
+class Deck
+  def initialize
+    @cards_drawn = []
+    
   end
-  
+
+  def draw_card
+    rand_card = [rand(1..2), rand(2..3)]
+    while @cards_drawn.include?(rand_card) == true
+      rand_card = [rand(1..2), rand(2..3)]
+    end
+    rand_card
+  end
+
+  def add_card(card)
+    @cards_drawn << card
+  end
+
+  def view_cards_drawn
+    p @cards_drawn
+  end
+
+  def suit(n)
+    case n 
+    when 1
+      "diamonds"
+    when 2
+      "clubs"
+    when 3
+      "hearts"
+    when 4
+      "spades"
+    end  
+  end
+
+  def rank(n)
+    case n
+    when 11
+      "Jack"
+    when 12
+      "Queen"
+    when 13 
+      "King"
+    when 14
+      "Ace"
+    else
+      n
+    end  
+  end
 
 end
 
-# 4- spades
-# 3- hearts
-# 2- clubs
-# 1- diamonds
-# -2..14 with 14 as ace
+# test
 
-# 414 - highest card (ace of spades)
-# 102 - lowest card (2 of diamonds)
+# deck = Deck.new
 
-# or value to keep track of if card has been dealt
-# put in hash with number as key and cardface as value
+# (1..10).each do |n|
+
+#   dealer = deck.draw_card
+#   deck.add_card(dealer)
+  
+#   p dealer
+#   deck.view_cards_drawn
+# end
