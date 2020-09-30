@@ -8,26 +8,22 @@ name = Name.new
 token = Token.new
 
   # get name
-  # puts "Hi, what's your name?"
-  # name = gets.chomp.capitalize
-  # puts
-  # puts "Hi #{name}. Let's play high low!"
   name.get_name
-
   token.total_tokens
 
   # play game
   while true
   
-    cards_drawn = []
-    total_tokens = 10
-    puts
-    puts 'How many tokens do you want to bet?'
-    pot = gets.to_i
-    total_tokens -= pot
+    # total_tokens = 10
+    # puts 'How many tokens do you want to bet?'
+    # pot = gets.to_i
+    # total_tokens -= pot
 
-    puts
-    puts "You have #{total_tokens} tokens remaining."
+    # puts
+    # puts "You have #{total_tokens} tokens remaining."
+
+    token.bet_tokens
+    token.tokens_remaining
 
     15.times do
 
