@@ -50,17 +50,7 @@ token = Token.new
       puts "The dealer flips his card. It's the #{deck.rank(dealer[1])} of #{deck.suit(dealer[0])}."
       puts
 
-      # # test compare
-      # p "dealer: #{dealer}"
-      # p "player: #{player}"
-      # p choice
-      # p dealer[1] > player[1]
       # compare both dealer and player cards, which is greater?
-      # if dealer[1].digits.length > 1
-      #   p dealer.join.to_i
-      # else
-      #   p dealer.join(0).to_i
-      # end
       dealer = dealer.reverse.join.to_i
       player = player.reverse.join.to_i
     
@@ -70,8 +60,6 @@ token = Token.new
       else 
         puts "Too bad, #{Name.name}. You lose."
       end
-    
-    
       
       # play again?
       puts 

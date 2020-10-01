@@ -1,7 +1,6 @@
 class Deck
   def initialize
     @cards_drawn = []
-    
   end
 
   def draw_card
@@ -14,10 +13,6 @@ class Deck
 
   def add_card(card)
     @cards_drawn << card
-  end
-
-  def view_cards_drawn
-    p @cards_drawn
   end
 
   def suit(n)
@@ -47,6 +42,13 @@ class Deck
       n
     end  
   end
+
+
+  # not used in game - testing only
+  def view_cards_drawn
+    p @cards_drawn
+  end
+
 
 end
 
