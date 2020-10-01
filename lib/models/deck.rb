@@ -4,9 +4,9 @@ class Deck
   end
 
   def draw_card
-    rand_card = [rand(1..2), rand(2..3)]
+    rand_card = [rand(1..4), rand(2..14)]
     while @cards_drawn.include?(rand_card) == true
-      rand_card = [rand(1..2), rand(2..3)]
+      rand_card = [rand(1..4), rand(2..14)]
     end
     rand_card
   end
@@ -43,6 +43,10 @@ class Deck
     end  
   end
 
+  def shuffle
+    @cards_drawn.clear
+    p @cards_drawn
+  end
 
   # not used in game - testing only
   def view_cards_drawn
