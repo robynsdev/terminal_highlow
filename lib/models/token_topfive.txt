@@ -3,8 +3,8 @@ player3
 player5
 100
 player4
-50
+3
 player6
-40
-playerinsert
-12
+2
+Aefae
+1

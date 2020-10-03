@@ -88,10 +88,9 @@ while true
   end
 
   token.tokens
-  puts "Your win streak is #{win_streak}."
+  puts "You have a win streak of #{win_streak}."
   
   # play again?
-
   puts 
   puts "Do you want to play again? (y/n)"
   play_again = gets.chomp.downcase
@@ -101,7 +100,11 @@ while true
   elsif play_again == 'y' && win == true
     token.cash_in      
     # high_score?
-  elsif play_again == 'n'
+  elsif play_again == 'n' && win == false
     game_over
+  elsif play_again == 'n' && win == true
+    token.bet_to_total
+    p "totaltokensgame.rb: #{token.total_tokens}"
+    game_over(name.name, token.total_tokens)
   end  
 end

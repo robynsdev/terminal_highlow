@@ -5,31 +5,11 @@ require_relative 'token'
 
 class High_score
 
-  def self.file_read
-    File.open("lib/models/high_score.yml", "r") do |file|
-      file.each do |line|
-        puts line
-      end
-    end
-  end
-
-
   def self.streak_table
     headers = %w[Player Win_streak]
     attrs = streak_rows  
     table = TTY::Table.new headers, attrs
     puts table.render(:ascii)
-  end
-
-  def self.streak_rows
-    rows = []
-    rows << ['Jane', '10']
-    rows << ['poop', '13']
-    rows << ['John', '8']
-    rows << ['Mf', '5']
-    rows << ['Matthew', '3']
-    puts rows
-    p rows
   end
 
   def self.token_table
@@ -39,9 +19,9 @@ class High_score
     puts table.render(:ascii)
   end
 
-  def self.token_topfive?
+  def self.token_topfive?(name, total_tokens)
     # read file
-    File.open("lib/models/high_score.txt", "r") do |file|
+    File.open("lib/models/token_topfive.txt", "r") do |file|
       f = file.readlines.map(&:chomp)
       @ary = []
       # put into @ary array
@@ -51,23 +31,20 @@ class High_score
       # sort by highest to lowest score
       @top_token = @ary.sort_by {|n| n[1].to_i }.reverse
       # if current player has high score, replace lowest score entry of @top_token array
-      if @top_token[4][1].to_i < token.total_tokens.to_i
-        @top_token[4][0] = name.name
-        @top_token[4][1] = token.total_tokens
+      p total_tokens
+      if @top_token[4][1].to_i < total_tokens.to_i
+        @top_token[4][0] = name
+        @top_token[4][1] = total_tokens
         puts "You got into the top 5 for total tokens!"
         # write @top_token array to file
-        File.open("lib/models/high_score.txt", "w") do |file|
+        File.open("lib/models/token_topfive.txt", "w") do |file|
           file.puts(@top_token)
         end
       end
     end
 
     def self.file_write
-      # player_score = [name.name, token.total_tokens]
-      File.open("lib/models/high_score.txt", "w") do |file|
-        # file << name.name
-        # file << token.total_tokens
-        # f = ["player", "10"]
+      File.open("lib/models/token_topfive.txt", "w") do |file|
         file.puts(@top_token)
       end 
     end

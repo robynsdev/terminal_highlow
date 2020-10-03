@@ -39,11 +39,15 @@ class Token
     puts "Do you want to cash in?(y/n)"
     cash_in = gets.chomp.downcase
     if cash_in == "y"
-      @total_tokens += @bet 
+      bet_to_total
       puts "You now have #{@total_tokens} total tokens."
       puts
       bet_tokens
     end
+  end
+
+  def bet_to_total
+    @total_tokens += @bet 
   end
 
 end
