@@ -1,10 +1,12 @@
 class Token
+  attr_reader :total_tokens
+
   def initialize
     @total_tokens = 10
     @bet = nil
   end
 
-  def total_tokens
+  def tokens
     puts "You have #{@total_tokens} total tokens."
     puts
   end
@@ -18,6 +20,12 @@ class Token
     puts 'How many tokens do you want to bet?'
     @bet = gets.to_i
     @total_tokens -= @bet
+    if @total_tokens < 0
+      @total_tokens += @bet
+      puts "You can't bet more than you have..."
+      puts
+      bet_tokens
+    end
   end
 
   def double_tokens

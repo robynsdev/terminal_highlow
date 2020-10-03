@@ -48,12 +48,6 @@ class Deck
     p @cards_drawn
   end
 
-  # not used in game - testing only
-  def view_cards_drawn
-    p @cards_drawn
-  end
-
-
 end
 
 # test

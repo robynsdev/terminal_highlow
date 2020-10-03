@@ -2,6 +2,7 @@
 require_relative '../models/hand'
 require_relative '../models/get_name'
 require_relative '../models/token'
+require_relative 'game_over'
 
 
 deck = Deck.new
@@ -9,10 +10,11 @@ name = Name.new
 token = Token.new
 
 round = 0
+win_streak = 0
 
 # get name
 name.get_name
-token.total_tokens
+token.tokens
 
 # play game
 # bet tokens
@@ -72,16 +74,24 @@ while true
     puts "Congratulations, #{name.name}. You won!"
     token.double_tokens
     win = true
+    win_streak += 1
   else 
     puts "Too bad, #{name.name}. You lose."
     puts
     win = false
+    win_streak = 0
+    # if 0 remaining tokens, view high score
+    puts token.total_tokens == 0
+    if token.total_tokens == 0
+      game_over
+    end
   end
 
-  token.total_tokens
-  
+  token.tokens
+  puts "Your win streak is #{win_streak}."
   
   # play again?
+
   puts 
   puts "Do you want to play again? (y/n)"
   play_again = gets.chomp.downcase
@@ -92,7 +102,6 @@ while true
     token.cash_in      
     # high_score?
   elsif play_again == 'n'
-    # high_score?
-    exit
+    game_over
   end  
 end

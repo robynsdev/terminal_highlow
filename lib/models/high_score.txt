@@ -1,1 +1,10 @@
-'dexter', '10'
+player3
+200
+player5
+100
+player4
+50
+player6
+40
+playerinsert
+12
