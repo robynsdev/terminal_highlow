@@ -17,7 +17,7 @@ class Token
   end
 
   def bet_tokens
-    puts 'How many tokens do you want to bet?'
+    puts 'How many tokens would you like to bet?'
     @bet = gets.to_i
     @total_tokens -= @bet
     if @total_tokens < 0
@@ -36,7 +36,7 @@ class Token
   end
 
   def cash_in
-    cash_in = TTY::Prompt.new.select('Do you want to cash in your tokens and put in a new bet?', cycle: true) do |menu|
+    cash_in = TTY::Prompt.new.select('Would you like to cash in your tokens and enter a new bet?', cycle: true) do |menu|
       menu.choice "Yes"
       menu.choice "No"
     end

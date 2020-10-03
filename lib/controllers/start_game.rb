@@ -2,10 +2,12 @@ require_relative '../views/game'
 
 module Start_game
   def game
-    puts "Start new game? (y/n)"
-    start_game = gets.chomp.downcase
+    start_game = TTY::Prompt.new.select('Start new game?', cycle: true) do |menu|
+      menu.choice "Yes"
+      menu.choice "No"
+    end
     puts
-    if start_game == 'y'
+    if start_game == 'Yes'
       Views.game
     else
       exit
