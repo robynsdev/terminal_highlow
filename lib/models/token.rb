@@ -22,7 +22,7 @@ class Token
     @total_tokens -= @bet
     if @total_tokens < 0
       @total_tokens += @bet
-      puts "You can't bet more than you have..."
+      puts "You can't bet more tokens than you have..."
       puts
       bet_tokens
     end
@@ -36,12 +36,14 @@ class Token
   end
 
   def cash_in
-    puts "Do you want to cash in?(y/n)"
-    cash_in = gets.chomp.downcase
-    if cash_in == "y"
+    cash_in = TTY::Prompt.new.select('Do you want to cash in your tokens and put in a new bet?', cycle: true) do |menu|
+      menu.choice "Yes"
+      menu.choice "No"
+    end
+    if cash_in == "Yes"
       bet_to_total
-      puts "You now have #{@total_tokens} total tokens."
       puts
+      puts "You now have #{@total_tokens} total tokens."
       bet_tokens
     end
   end
