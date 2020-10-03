@@ -3,6 +3,7 @@ require "tty-prompt"
 require_relative '../models/hand'
 require_relative '../models/get_name'
 require_relative '../models/token'
+require_relative '../models/streak'
 require_relative 'game_over'
 
 module Views
@@ -10,9 +11,9 @@ module Views
     deck = Deck.new
     name = Name.new
     token = Token.new
+    streak = Streak.new
 
-    round = 0
-    win_streak = 0
+    round = 0    
 
     # get name
     name.get_name
@@ -57,12 +58,9 @@ module Views
 
       puts "Do you think the dealer's card is higher or lower than yours?"
       choice = TTY::Prompt.new.select('', cycle: true) do |menu|
-        menu.choice 'higher'
-        menu.choice 'lower'
+        menu.choice 'high'
+        menu.choice 'low'
       end
-      # puts "Choose high or low."
-      # choice = gets.chomp.downcase
-      # puts choice = gets.chomp.downcase if choice != "high" || choice != "low"
       puts
 
       # show dealer card
@@ -74,26 +72,27 @@ module Views
       dealer = dealer.reverse.join.to_i
       player = player.reverse.join.to_i
 
-      if (dealer > player && choice == 'higher') || (dealer < player && choice == 'lower')
+      if (dealer > player && choice == 'high') || (dealer < player && choice == 'low')
         puts "Congratulations, #{name.name}. You won!"
         token.double_tokens
         win = true
-        win_streak += 1
+        streak.win
       else 
         puts "Too bad, #{name.name}. You lose."
         puts
         win = false
-        win_streak = 0
+        streak.lose
         # if 0 remaining tokens, view high score
-        puts token.total_tokens == 0
         if token.total_tokens == 0
+          puts "You're out of tokens. Game over."
           Views.game_over
         end
       end
 
       token.tokens
-      puts "You have a win streak of #{win_streak}."
-      puts
+      streak.win_streak
+      # puts "You have a win streak of #{win_streak}."
+      # puts
 
       # play again? 
       play_again = TTY::Prompt.new.select('Do you want to play again?', cycle: true) do |menu|
@@ -106,12 +105,11 @@ module Views
         token.bet_tokens 
       elsif play_again == 'Yes' && win == true
         token.cash_in      
-        # high_score?
       elsif play_again == 'No' && win == false
         Views.game_over
       elsif play_again == 'No' && win == true
         token.bet_to_total
-        Views.game_over(name.name, token.total_tokens)
+        Views.game_over(name.name, token.total_tokens, streak.streak)
       end  
     end
   end
