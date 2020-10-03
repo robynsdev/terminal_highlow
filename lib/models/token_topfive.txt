@@ -2,9 +2,9 @@ player3
 200
 player5
 100
+Efsfse
+40
 player4
 3
-player6
-2
-Aefae
-1
+Aafe
+15

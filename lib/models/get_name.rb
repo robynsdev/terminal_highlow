@@ -6,6 +6,7 @@ class Name
   end
 
   def get_name
+    puts
     puts "Hi, what's your name?"
     @name = gets.chomp.capitalize
     puts

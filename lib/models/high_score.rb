@@ -35,7 +35,8 @@ class High_score
       if @top_token[4][1].to_i < total_tokens.to_i
         @top_token[4][0] = name
         @top_token[4][1] = total_tokens
-        puts "You got into the top 5 for total tokens!"
+        @top_token = @ary.sort_by {|n| n[1].to_i }.reverse
+        puts "You got onto the total token high score board!"
         # write @top_token array to file
         File.open("lib/models/token_topfive.txt", "w") do |file|
           file.puts(@top_token)
@@ -51,22 +52,3 @@ class High_score
   
   end
 end
-
-# name = Name.new
-# token = Token.new
-# High_score.streak_rows
-# High_score.file_write
-# High_score.token_rows
-# High_score.token_table
-# High_score.file_read
-
-# player2
-# 10
-# player3
-# 200
-# player4
-# 50
-# player5
-# 100
-# player6
-# 40

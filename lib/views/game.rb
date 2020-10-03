@@ -1,4 +1,5 @@
-# require_relative '../models/deck'
+require "tty-prompt"
+
 require_relative '../models/hand'
 require_relative '../models/get_name'
 require_relative '../models/token'
@@ -55,8 +56,12 @@ module Views
       sleep(0.3)
 
       puts "Do you think the dealer's card is higher or lower than yours?"
-      puts "Choose high or low."
-      choice = gets.chomp.downcase
+      choice = TTY::Prompt.new.select('', cycle: true) do |menu|
+        menu.choice 'higher'
+        menu.choice 'lower'
+      end
+      # puts "Choose high or low."
+      # choice = gets.chomp.downcase
       # puts choice = gets.chomp.downcase if choice != "high" || choice != "low"
       puts
 
@@ -69,7 +74,7 @@ module Views
       dealer = dealer.reverse.join.to_i
       player = player.reverse.join.to_i
 
-      if (dealer > player && choice == 'high') || (dealer < player && choice == 'low')
+      if (dealer > player && choice == 'higher') || (dealer < player && choice == 'lower')
         puts "Congratulations, #{name.name}. You won!"
         token.double_tokens
         win = true
@@ -88,22 +93,24 @@ module Views
 
       token.tokens
       puts "You have a win streak of #{win_streak}."
-      
-      # play again?
-      puts 
-      puts "Do you want to play again? (y/n)"
-      play_again = gets.chomp.downcase
       puts
-      if play_again == 'y' && win == false
+
+      # play again? 
+      play_again = TTY::Prompt.new.select('Do you want to play again?', cycle: true) do |menu|
+        menu.choice "Yes"
+        menu.choice "No"
+      end
+      puts
+      
+      if play_again == 'Yes' && win == false
         token.bet_tokens 
-      elsif play_again == 'y' && win == true
+      elsif play_again == 'Yes' && win == true
         token.cash_in      
         # high_score?
-      elsif play_again == 'n' && win == false
+      elsif play_again == 'No' && win == false
         Views.game_over
-      elsif play_again == 'n' && win == true
+      elsif play_again == 'No' && win == true
         token.bet_to_total
-        p "totaltokensgame.rb: #{token.total_tokens}"
         Views.game_over(name.name, token.total_tokens)
       end  
     end
