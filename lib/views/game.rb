@@ -1,5 +1,4 @@
 require "tty-prompt"
-
 require_relative '../models/hand'
 require_relative '../models/get_name'
 require_relative '../models/token'
@@ -91,8 +90,6 @@ module Views
 
       token.tokens
       streak.win_streak
-      # puts "You have a win streak of #{win_streak}."
-      # puts
 
       # play again? 
       play_again = TTY::Prompt.new.select('Do you want to play again?', cycle: true) do |menu|
