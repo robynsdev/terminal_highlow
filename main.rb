@@ -10,7 +10,7 @@ module Main
     Views.title
     puts 
     choice = TTY::Prompt.new.select('', cycle: true) do |menu|
-      menu.choice "Start game"
+      menu.choice "Start new game"
       menu.choice "How to play"
       menu.choice "High scores"
       menu.choice "Quit"

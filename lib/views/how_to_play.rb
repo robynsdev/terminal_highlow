@@ -1,4 +1,5 @@
 # require_relative '../controllers/back_menu'
+require_relative '../controllers/start_game'
 
 module Views
   def how_to_play
@@ -10,6 +11,7 @@ module Views
     puts
     
     # Back_menu.back_to_title
+    Start_game.game
   end
 
   module_function :how_to_play
