@@ -47,18 +47,4 @@ class Deck
     @cards_drawn.clear
     p @cards_drawn
   end
-
 end
-
-# test
-
-# deck = Deck.new
-
-# (1..10).each do |n|
-
-#   dealer = deck.draw_card
-#   deck.add_card(dealer)
-  
-#   p dealer
-#   deck.view_cards_drawn
-# end

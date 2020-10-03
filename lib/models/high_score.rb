@@ -1,11 +1,7 @@
 require 'yaml'
 require 'tty-table'
-require_relative 'get_name'
-require_relative 'token'
-require_relative 'streak'
 
 class High_score
-
   def self.token_topfive?(name, total_tokens, streak)
     # read file
     File.open("lib/models/token_topfive.txt", "r") do |file|

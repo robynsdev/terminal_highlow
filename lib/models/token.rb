@@ -22,8 +22,6 @@ class Token
       q.messages[:convert?] = "Please input a number."
     end
     
-    # puts 'How many tokens would you like to bet?'
-    # @bet = gets.to_i
     @bet = bet_tokens
     @total_tokens -= @bet
     if @total_tokens < 0

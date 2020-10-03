@@ -16,5 +16,4 @@ class Name
     puts "Hi #{@name}. Let's play high low!"
     puts
   end
-
 end

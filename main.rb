@@ -1,4 +1,3 @@
-# require_relative 'dispatch'
 require "tty-prompt"
 require_relative 'lib/views/title'
 require_relative 'dispatch'
