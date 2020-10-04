@@ -67,7 +67,7 @@ The target audience is anyone who can use a computer. Clear instructions are giv
 
 ## Control flow diagram
 
-![highlow_flow](highlow_flow.png)
+![highlow_flow](docs/highlow_flow.png)
 
 
 
