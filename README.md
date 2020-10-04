@@ -13,11 +13,11 @@ A terminal game
 5. [Implementation plan](#implementation-plan)
 6. [How to use and install this app](#how-to-use-and-install-this-app)
 
-## 1. Source control repository
+## Source control repository
 
 High Low can be downloaded from [GitHub](https://github.com/robynsdev/terminal_highlow).
 
-## 2. Purpose & scope
+## Purpose & scope
 
 High low is a fun game where a dealer is dealt a card face down and the player is dealt a card face up. The player must decide if the dealer's card is higher or lower than their card. The deck is reshuffled every 15 rounds. Aces are the highest cards, twos are the lowest. If the same number is drawn, suits are used to judge which card is higher. Suits in order of high to low are spades, hearts, clubs, diamonds.
 
@@ -27,7 +27,7 @@ Besides luck, the player must calculate the chances of their card being higher o
 
 The target audience is anyone who can use a computer. Clear instructions are given on how to install the app below. 
 
-## 3. Features and user interaction
+## Features and user interaction
 
 1. ### Input name
 
@@ -65,7 +65,7 @@ The target audience is anyone who can use a computer. Clear instructions are giv
 
    If they want to stop playing, they are shown the high score screen. If the player won the last round, the game will check if they have obtained a high score and if they did, add their name and score to the respective high score table.
 
-## 4. Control flow diagram
+## Control flow diagram
 
 ![image-20201003235900239](/Users/robyn/Library/Application Support/typora-user-images/image-20201003235900239.png)
 
