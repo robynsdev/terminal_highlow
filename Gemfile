@@ -11,3 +11,5 @@ gem "rspec"
 gem 'tty-table', '~> 0.8.0'
 
 gem "tty-prompt"
+
+gem "colorize"

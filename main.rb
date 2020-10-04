@@ -1,4 +1,5 @@
 require "tty-prompt"
+require 'colorize'
 require_relative 'lib/views/title'
 require_relative 'dispatch'
 
