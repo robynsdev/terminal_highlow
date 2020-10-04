@@ -1,4 +1,4 @@
-require_relative 'lib/controllers/menu_controller'
+require_relative 'controllers/menu_controller'
 
 def dispatch(cmd)
   case cmd
