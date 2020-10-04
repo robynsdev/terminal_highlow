@@ -71,11 +71,11 @@ The target audience is anyone who can use a computer. Clear instructions are giv
 
 
 
-## 5. Implementation plan
+## Implementation plan
 
    The implementation plan for this project was developed on [Trello](https://trello.com/b/muiMqkFs/terminal-app-highlow).
 
-## 6. How to use and install this app
+## How to use and install this app
 
 Anyone with access to bash can use and install this app. To use and install this app
 
