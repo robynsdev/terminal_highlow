@@ -3,6 +3,8 @@ class Deck
     @cards_drawn = []
   end
 
+  # FEATURE 2: Randomised cards drawn are depleted from deck
+  # new drawn card is checked against @cards_drawn to ensure same card is not drawn
   def draw_card
     rand_card = [rand(1..4), rand(2..14)]
     while @cards_drawn.include?(rand_card) == true
@@ -10,7 +12,9 @@ class Deck
     end
     rand_card
   end
-
+  
+  # FEATURE 2: Randomised cards drawn are depleted from deck
+  # any cards drawn are added to @cards_drawn
   def add_card(card)
     @cards_drawn << card
   end

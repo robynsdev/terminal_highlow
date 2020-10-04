@@ -1,5 +1,6 @@
 require "tty-prompt"
 
+# FEATURE 1: Input name
 class Name
   attr_reader :name
 

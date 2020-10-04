@@ -3,6 +3,7 @@ require_relative '../models/high_score'
 require_relative '../controllers/start_game'
 
 module Views
+  # FEATURE 4: High score boards
   def game_over(name=nil, total_tokens=0, streak=0)
     # puts "HIGH SCORES".colorize(:magenta)
     a = Artii::Base.new

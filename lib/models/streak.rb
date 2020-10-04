@@ -6,6 +6,8 @@ class Streak
     @streak = 0
   end
 
+  # FEATURE 3: Token betting & win streaks 
+  # if win, increase win streak, else reset win streak to 0
   def win
     @streak += 1
   end

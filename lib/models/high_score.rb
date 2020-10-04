@@ -2,6 +2,8 @@ require 'yaml'
 require 'tty-table'
 
 class High_score
+  # FEATURE 1: Input name used to update high score board
+  # FEATURE 4: High score boards
   def self.token_topfive?(name, total_tokens, streak)
     # read file
     File.open("lib/models/token_topfive.txt", "r") do |file|
@@ -33,6 +35,7 @@ class High_score
     puts table.render(:ascii)
   end
 
+  # FEATURE 1: Input name used to update high score board
   def self.streak_topfive?(name, total_tokens, streak)
     # read file
     File.open("lib/models/streak_topfive.txt", "r") do |file|

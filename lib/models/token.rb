@@ -15,13 +15,15 @@ class Token
     puts
   end
 
+  # FEATURE 3: Token betting & win streaks 
+  # get bet amount from player, only accept numbers
   def bet_tokens
     bet_token = TTY::Prompt.new.ask('How many tokens would you like to bet?') do |q|
       q.validate /^[0-9]+$/
       q.convert :int
       q.messages[:convert?] = "Please input a number."
     end
-    
+    # check that the number input is equal or less than current token amount
     @bet = bet_token
     @total_tokens -= @bet
     if @total_tokens < 0

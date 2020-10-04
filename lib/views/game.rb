@@ -73,6 +73,7 @@ module Views
       dealer = dealer.reverse.join.to_i
       player = player.reverse.join.to_i
 
+      # FEATURE 1: Input name used in win/lose message
       if (dealer > player && choice == 'high') || (dealer < player && choice == 'low')
         puts "Congratulations, #{name.name}. You won!".colorize(:cyan)
         token.double_tokens
@@ -105,6 +106,7 @@ module Views
       end
       puts
       
+      # FEATURE 5: Restart game
       if play_again == 'Yes' && win == false
         token.bet_tokens 
       elsif play_again == 'Yes' && win == true
