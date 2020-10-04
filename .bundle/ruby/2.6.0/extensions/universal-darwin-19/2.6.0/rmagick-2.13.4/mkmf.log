@@ -1,0 +1,16 @@
+checking for Ruby version >= 1.8.5... -------------------- yes
+
+--------------------
+
+find_executable: checking for xcrun... -------------------- yes
+
+--------------------
+
+find_executable: checking for Magick-config... -------------------- no
+
+--------------------
+
+find_executable: checking for pkg-config... -------------------- yes
+
+--------------------
+

@@ -7,7 +7,7 @@ class Token
   end
 
   def tokens
-    puts "You have #{@total_tokens} total tokens."
+    puts "You have #{@total_tokens} tokens in hand."
   end
 
   def tokens_remaining

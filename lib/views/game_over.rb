@@ -1,8 +1,12 @@
+require 'artii'
 require_relative '../models/high_score'
 require_relative '../controllers/start_game'
 
 module Views
   def game_over(name=nil, total_tokens=0, streak=0)
+    # puts "HIGH SCORES".colorize(:magenta)
+    a = Artii::Base.new
+    puts a.asciify('HIGH SCORES').colorize(:light_green)
     High_score.token_topfive?(name, total_tokens, streak)
     High_score.token_table
     puts

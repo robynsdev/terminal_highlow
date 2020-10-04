@@ -1,4 +1,6 @@
 require "tty-prompt"
+require 'ruby2d'
+
 require_relative '../models/hand'
 require_relative '../models/get_name'
 require_relative '../models/token'
@@ -72,18 +74,23 @@ module Views
       player = player.reverse.join.to_i
 
       if (dealer > player && choice == 'high') || (dealer < player && choice == 'low')
-        puts "Congratulations, #{name.name}. You won!"
+        puts "Congratulations, #{name.name}. You won!".colorize(:cyan)
         token.double_tokens
         win = true
         streak.win
+        winner = Sound.new('lib/media/fanfare_x.wav')
+        winner.play
       else 
-        puts "Too bad, #{name.name}. You lose."
+        puts "Too bad, #{name.name}. You lose.".colorize(:red)
         puts
         win = false
         streak.lose
+        loser = Sound.new('lib/media/clang_x.wav')
+        loser.play  
         # if 0 remaining tokens, view high score
         if token.total_tokens == 0
           puts "You're out of tokens. Game over."
+          sleep(1)
           Views.game_over
         end
       end
