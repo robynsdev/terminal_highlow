@@ -1,10 +1,10 @@
 Turtle
 80
-player3
-20
-Elephant
-16
-player5
-10
+Aefeafefaef
+40
 Hamburgerler
 21
+player3
+20
+Eeafea
+17

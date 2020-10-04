@@ -16,13 +16,13 @@ class Token
   end
 
   def bet_tokens
-    bet_tokens = TTY::Prompt.new.ask('How many tokens would you like to bet?') do |q|
+    bet_token = TTY::Prompt.new.ask('How many tokens would you like to bet?') do |q|
       q.validate /^[0-9]+$/
       q.convert :int
       q.messages[:convert?] = "Please input a number."
     end
     
-    @bet = bet_tokens
+    @bet = bet_token
     @total_tokens -= @bet
     if @total_tokens < 0
       @total_tokens += @bet

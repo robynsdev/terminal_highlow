@@ -1,10 +1,10 @@
-Turtle
-1
 Elephant
 5
-player3
-3
-player5
-2
 Hamburgerler
 4
+player3
+3
+Aefeafefaef
+2
+Eeafea
+3
