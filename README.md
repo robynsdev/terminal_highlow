@@ -67,7 +67,7 @@ The target audience is anyone who can use a computer. Clear instructions are giv
 
 ## Control flow diagram
 
-![highlow_flow](/Users/robyn/Documents/CS/Coder_Academy/high_low/highlow_flow.png)
+![highlow_flow](highlow_flow.png)
 
 
 
