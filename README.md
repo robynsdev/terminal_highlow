@@ -67,7 +67,7 @@ The target audience is anyone who can use a computer. Clear instructions are giv
 
 ## Control flow diagram
 
-![image-20201003235900239](/Users/robyn/Library/Application Support/typora-user-images/image-20201003235900239.png)
+![highlow_flow](/Users/robyn/Documents/CS/Coder_Academy/high_low/highlow_flow.png)
 
 
 
